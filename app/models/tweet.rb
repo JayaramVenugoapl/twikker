@@ -1,4 +1,5 @@
 class Tweet < ApplicationRecord
+  include ::Media
   self.per_page = 20
 
   belongs_to :user
@@ -13,4 +14,8 @@ class Tweet < ApplicationRecord
   validates :message, presence: true, length: { maximum: 140 }
 
   has_one_attached :media, dependent: :destroy
+
+  def media_url
+    url!(self.media)
+  end
 end

@@ -3,12 +3,12 @@ class Api::V1::TweetsController < ApplicationController
 
   def create
     @tweet = current_user.tweets.create!(tweet_params)
-    json_response(@tweet)
+    json_response(serializer(@tweet), "", :created)
   end
 
   def update
     @tweet.update!(tweet_params)
-    json_response(@tweet)
+    json_response(serializer(@tweet))
   end
 
   def destroy
@@ -24,5 +24,9 @@ class Api::V1::TweetsController < ApplicationController
 
   def tweet_params
     params.require(:tweets).permit(:message, :location, :media)
+  end
+
+  def serializer(object)
+    TweetSerializer.new object
   end
 end

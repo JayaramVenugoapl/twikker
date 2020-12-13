@@ -56,13 +56,13 @@ ActiveRecord::Schema.define(version: 2020_12_13_120717) do
   end
 
   create_table "retweets", force: :cascade do |t|
-    t.integer "retweeter_id", null: false
-    t.integer "source_tweet_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "tweet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["retweeter_id"], name: "index_retweets_on_retweeter_id"
-    t.index ["source_tweet_id", "retweeter_id"], name: "index_retweets_on_source_tweet_id_and_retweeter_id"
-    t.index ["source_tweet_id"], name: "index_retweets_on_source_tweet_id"
+    t.index ["tweet_id", "user_id"], name: "index_retweets_on_tweet_id_and_user_id"
+    t.index ["tweet_id"], name: "index_retweets_on_tweet_id"
+    t.index ["user_id"], name: "index_retweets_on_user_id"
   end
 
   create_table "tweets", force: :cascade do |t|

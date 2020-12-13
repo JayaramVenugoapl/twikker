@@ -1,11 +1,11 @@
 class Api::V1::UsersController < ApplicationController
   def show
-    json_response(UserSerializer.new(current_user))
+    json_response(serializer(current_user))
   end
 
   def update
     current_user.update!(user_params)
-    json_response(UserSerializer.new(current_user))
+    json_response(serializer(current_user))
   end
 
   def following
@@ -32,5 +32,9 @@ class Api::V1::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :username, :about, :location, :website, :image, :cover)
+  end
+
+  def serializer(object)
+    UserSerializer.new object
   end
 end

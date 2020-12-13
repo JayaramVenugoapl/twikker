@@ -4,7 +4,7 @@ class Api::V1::RegistrationController < ApplicationController
   def create
     @user = User.create!(user_params)
     json_response(
-      UserSerializer.new(@user),
+      serializer(@user),
       Message.account_created,
       :created
     )
@@ -20,5 +20,9 @@ class Api::V1::RegistrationController < ApplicationController
       :password_confirmation,
       :date_of_birth
     )
+  end
+
+  def serializer(object)
+    UserSerializer.new object
   end
 end

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       end
 
       resources :relationships, only: [:create, :destroy]
+      resources :feeds, only: [:index]
 
       post "auth/login", :to => "sessions#create"
       post "signup", :to => "registration#create"
