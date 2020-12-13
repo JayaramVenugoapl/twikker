@@ -34,5 +34,6 @@ module Twitter
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.autoloader = :classic
+    config.autoload_paths += %W(#{Rails.root}/lib)
   end
 end
