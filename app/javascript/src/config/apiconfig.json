@@ -1,0 +1,22 @@
+{
+  "environment": "DEV",
+  "baseURLs": {
+    "development": "http://localhost:3000/api/v1/",
+    "production": "https://twikker.herokuapp.com/api/v1"
+  },
+  "user": {
+    "createUser": "/signup",
+    "login": "/auth/login",
+    "following": "/following",
+    "followers": "/followers"
+  },
+  "feeds": "/feeds",
+  "tweets": {
+    "base": "/tweets",
+    "like" : "/like",
+    "unlike": "/unlike"
+  },
+  "follow": {
+    "relationships": "/relationships"
+  }
+}

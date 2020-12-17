@@ -12,5 +12,9 @@
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "react-router-dom": "^5.2.0"
+  }
 }
